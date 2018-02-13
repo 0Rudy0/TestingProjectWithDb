@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,19 +25,23 @@ namespace TestingProjectWithDb
         public MainWindow()
         {
             InitializeComponent();
-#if DEBUG
-            ctx = new streamlineOrgContext("C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamlineOrg.sdf");
-#else
-            ctx = new streamlineOrgContext(System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory + @"\streamlineOrg.sdf");
-#endif
-            try
-            {
-                RefreshListView();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //#if DEBUG
+            //            ctx = new streamlineOrgContext("C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamlineOrgg.sdf");
+            //#else
+            //            ctx = new streamlineOrgContext(System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory + @"\streamlineOrg.sdf");
+            //#endif
+
+            SqlCeConnection scon = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamlineOrg.sdf");
+            scon.Open();
+
+            //try
+            //{
+            //    RefreshListView();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         public void RefreshListView()
