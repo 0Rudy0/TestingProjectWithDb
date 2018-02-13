@@ -22,27 +22,49 @@ namespace TestingProjectWithDb
     public partial class MainWindow : Window
     {
         SqlCeConnection sqlConnection1;
+        streamlineOrgContext ctx = new streamlineOrgContext("streamlineOrg.sdf");
         public MainWindow()
         {
             InitializeComponent();
-            sqlConnection1 = new SqlCeConnection();
-            sqlConnection1.ConnectionString = "Data Source = C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline.sdf;Persist Security Info=False";
-            sqlConnection1.Open();
-            getData();
-
+            //sqlConnection1 = new SqlCeConnection();
+            //sqlConnection1.ConnectionString = "Data Source = C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline.sdf;Persist Security Info=False";
+            //sqlConnection1.Open();
+            //getData();
+            RefreshListView();
         }
 
-        public void getData()
+        public void RefreshListView()
         {
-
-            string SqlCeCommandGetMovies = "SELECT * FROM [Test]";
-            SqlCeCommand command = new SqlCeCommand(SqlCeCommandGetMovies, sqlConnection1);
-            SqlCeDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
+            listBox1.Items.Clear();
+            foreach (Test t in ctx.Test.ToList())
             {
-                MessageBox.Show((string)reader["name"]);
+                listBox1.Items.Add(t.Name);
             }
+
+            listBox1.ScrollIntoView(listBox1.Items[listBox1.Items.Count - 1]);
+        }
+
+        //public void getData()
+        //{
+
+        //    string SqlCeCommandGetMovies = "SELECT * FROM [Test]";
+        //    SqlCeCommand command = new SqlCeCommand(SqlCeCommandGetMovies, sqlConnection1);
+        //    SqlCeDataReader reader = command.ExecuteReader();
+
+        //    while (reader.Read())
+        //    {
+        //        MessageBox.Show((string)reader["name"]);
+        //    }
+        //}
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Test newT = new Test();
+            newT.Name = textBox1.Text;
+            ctx.Test.InsertOnSubmit(newT);
+            ctx.SubmitChanges();
+
+            RefreshListView();
         }
     }
 }
