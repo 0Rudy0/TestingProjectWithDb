@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +20,23 @@ namespace TestingProjectWithDb
     /// </summary>
     public partial class MainWindow : Window
     {
-        SqlCeConnection sqlConnection1;
-        streamlineOrgContext ctx = new streamlineOrgContext("streamlineOrg.sdf");
+        streamlineOrgContext ctx;
         public MainWindow()
         {
             InitializeComponent();
-            //sqlConnection1 = new SqlCeConnection();
-            //sqlConnection1.ConnectionString = "Data Source = C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline.sdf;Persist Security Info=False";
-            //sqlConnection1.Open();
-            //getData();
-            RefreshListView();
+#if DEBUG
+            ctx = new streamlineOrgContext("C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamlineOrg.sdf");
+#else
+            ctx = new streamlineOrgContext(System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory + @"\streamlineOrg.sdf");
+#endif
+            try
+            {
+                RefreshListView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void RefreshListView()
@@ -43,19 +49,6 @@ namespace TestingProjectWithDb
 
             listBox1.ScrollIntoView(listBox1.Items[listBox1.Items.Count - 1]);
         }
-
-        //public void getData()
-        //{
-
-        //    string SqlCeCommandGetMovies = "SELECT * FROM [Test]";
-        //    SqlCeCommand command = new SqlCeCommand(SqlCeCommandGetMovies, sqlConnection1);
-        //    SqlCeDataReader reader = command.ExecuteReader();
-
-        //    while (reader.Read())
-        //    {
-        //        MessageBox.Show((string)reader["name"]);
-        //    }
-        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
