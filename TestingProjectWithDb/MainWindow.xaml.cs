@@ -31,7 +31,7 @@ namespace TestingProjectWithDb
             //            ctx = new streamlineOrgContext(System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory + @"\streamlineOrg.sdf");
             //#endif
 
-            SqlCeConnection scon = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamlineOrg.sdf");
+            SqlCeConnection scon = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline40.sdf");
             scon.Open();
 
             //try

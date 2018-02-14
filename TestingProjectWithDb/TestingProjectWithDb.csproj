@@ -168,7 +168,10 @@
     <Content Include="sqlcese35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="streamlineOrg.sdf">
+    <Content Include="streamline35.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="streamline40.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="System.Data.SqlServerCe.dll">
