@@ -10,9 +10,22 @@ namespace TestingProjectWithDb
 {
     public static class DAL
     {
-        private static SqlCeConnection conn = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline35.sdf");
+        private static SqlCeConnection conn;
         private static SqlCeCommand cmd = null;
         private static SqlCeDataReader rdr = null;
+
+        public static void InitConnection(bool isClickOnce)
+        {
+            if (isClickOnce)
+            {
+                conn = new SqlCeConnection("Data Source=" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory + @"\streamline35.sdf");
+            }
+            else
+            {
+                conn = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline35.sdf");
+
+            }
+        }
 
         public static List<Test> GetItems()
         {
