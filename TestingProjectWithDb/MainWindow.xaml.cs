@@ -22,6 +22,7 @@ namespace TestingProjectWithDb
     public partial class MainWindow : Window
     {
         streamlineOrgContext ctx;
+        SqlCeConnection scon;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,23 +32,23 @@ namespace TestingProjectWithDb
             //            ctx = new streamlineOrgContext(System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory + @"\streamlineOrg.sdf");
             //#endif
 
-            SqlCeConnection scon = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline40.sdf");
-            scon.Open();
+            //scon = new SqlCeConnection("Data Source=C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline35.sdf");
+            //scon.Open();
 
-            //try
-            //{
-            //    RefreshListView();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            try
+            {
+                RefreshListView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void RefreshListView()
         {
             listBox1.Items.Clear();
-            foreach (Test t in ctx.Test.ToList())
+            foreach (Test t in DAL.GetItems())
             {
                 listBox1.Items.Add(t.Name);
             }
