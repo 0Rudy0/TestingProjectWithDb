@@ -60,9 +60,8 @@ namespace TestingProjectWithDb
         {
             Test newT = new Test();
             newT.Name = textBox1.Text;
-            ctx.Test.InsertOnSubmit(newT);
-            ctx.SubmitChanges();
-
+            DAL.InsertNewItem(newT);
+            
             RefreshListView();
         }
     }
