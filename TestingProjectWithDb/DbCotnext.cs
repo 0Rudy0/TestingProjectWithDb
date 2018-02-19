@@ -21,8 +21,8 @@ using System.Reflection;
 
 
 
-[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamlineOrg.sdf")]
-public partial class streamlineOrgContext : System.Data.Linq.DataContext
+[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="C:\\Projects\\TestingProjectWithDb\\TestingProjectWithDb\\streamline35.sdf")]
+public partial class DbContext : System.Data.Linq.DataContext
 {
 	
 	private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -34,25 +34,25 @@ public partial class streamlineOrgContext : System.Data.Linq.DataContext
   partial void DeleteTest(Test instance);
   #endregion
 	
-	public streamlineOrgContext(string connection) : 
+	public DbContext(string connection) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public streamlineOrgContext(System.Data.IDbConnection connection) : 
+	public DbContext(System.Data.IDbConnection connection) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public streamlineOrgContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+	public DbContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public streamlineOrgContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+	public DbContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
