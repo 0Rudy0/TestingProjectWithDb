@@ -27,10 +27,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://localhost/test/</InstallUrl>
+    <InstallUrl>http://rudy007-002-site4.dtempurl.com/signalr/deployTest/</InstallUrl>
     <WebPage>deploy.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>39</ApplicationRevision>
+    <ApplicationRevision>46</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -68,7 +68,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -77,10 +77,17 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>06349DBC158290E33E6701008CC88908E21A3332</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>32EABE5D5E5E597D5815470D5BD6EF2D27A3FC05</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TestingProjectWithDb_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>posao.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestTimestampUrl>
+    </ManifestTimestampUrl>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -146,12 +153,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="posao.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="TestingProjectWithDb_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -214,9 +223,11 @@
     <Error Condition="!Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe" sign /f "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\posao.pfx" /p 12344 /v "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\bin\Release\TestingProjectWithDb.exe"</PostBuildEvent>
   </PropertyGroup>
+  <!--<Target Name="BeforePublish">
+    <Exec Command="&quot;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe&quot; sign /f &quot;C:\Projects\TestingProjectWithDb\TestingProjectWithDb\posao.pfx&quot; /p 12344 /v &quot;C:\Projects\TestingProjectWithDb\TestingProjectWithDb\bin\Release\TestingProjectWithDb.exe&quot;" />
+  </Target>-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
