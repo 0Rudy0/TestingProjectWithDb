@@ -17,7 +17,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>C:\Deploy\Test\</PublishUrl>
+    <PublishUrl>C:\Deploy\TestDb\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,9 +28,8 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://rudy007-002-site4.dtempurl.com/signalr/deployTest/</InstallUrl>
-    <WebPage>deploy.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>46</ApplicationRevision>
+    <ApplicationRevision>57</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -166,6 +165,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="BuildEvents.txt" />
     <Content Include="sqlceca35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -203,11 +203,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="QuickBooks.SDK">
-      <Visible>False</Visible>
-      <ProductName>QuickBooks SDK 13.0</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="SqlCompactEdition35">
       <Visible>False</Visible>
       <ProductName>SQL Server Compact Edition 3.5 SP2</ProductName>
@@ -223,7 +218,8 @@
     <Error Condition="!Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baseclass.Contrib.Nuget.Output.2.3.0\build\net40\Baseclass.Contrib.Nuget.Output.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe" sign /f "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\posao.pfx" /p 12344 /v "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\bin\Release\TestingProjectWithDb.exe"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!--<Target Name="BeforePublish">
     <Exec Command="&quot;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe&quot; sign /f &quot;C:\Projects\TestingProjectWithDb\TestingProjectWithDb\posao.pfx&quot; /p 12344 /v &quot;C:\Projects\TestingProjectWithDb\TestingProjectWithDb\bin\Release\TestingProjectWithDb.exe&quot;" />

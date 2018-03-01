@@ -1,0 +1,2 @@
+﻿"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe" sign /f "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\posao.pfx" /p 12344 /v "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\bin\Release\TestingProjectWithDb.exe"
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe" sign /f "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\posao.pfx" /p 12344 /v "C:\Projects\TestingProjectWithDb\TestingProjectWithDb\obj\Release\TestingProjectWithDb.exe"
